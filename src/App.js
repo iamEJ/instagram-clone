@@ -1,10 +1,17 @@
 import React from "react";
 import "./App.css";
+import Header from "./Components/Header";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Instagram Clone</h1>
+    <div className="app">
+      <div className="app_header">
+        <Header />
+      </div>
+      <div className="app_body">
+        {/* Posts */}
+        {/* Posts */}
+      </div>
     </div>
   );
 }
