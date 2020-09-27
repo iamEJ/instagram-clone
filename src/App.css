@@ -6,3 +6,13 @@
   background-color: #fafafa;
   height: 100vh;
 }
+
+.modal_image {
+  width: 100%;
+  object-fit: contain;
+}
+
+.app_signup {
+  display: flex;
+  flex-direction: column;
+}
