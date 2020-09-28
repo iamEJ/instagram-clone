@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import db, { auth } from "../firebase";
+import { auth } from "../firebase";
 import { Button, Input } from "@material-ui/core";
 import Modal from "@material-ui/core/Modal";
 import { makeStyles } from "@material-ui/core/styles";
+import ImagUpload from "./ImagUpload";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -55,6 +56,11 @@ function Login() {
 
   return (
     <div>
+      {user?.displayName ? (
+        <ImagUpload username={user.displayName} />
+      ) : (
+        <h3>Login to upload</h3>
+      )}
       <div>
         <Modal open={open} onClose={() => setOpen(false)}>
           <div style={modalStyle} className={classes.paper}>
