@@ -66,7 +66,10 @@ function Login() {
           <Modal open={openUpload} onClose={() => setOpenUpload(false)}>
             <ImagUpload username={user.displayName} />
           </Modal>
-          <Button onClick={openUploadBotton}>Upload in image</Button>
+          <h3 className="user_name">Hello, {user.displayName}</h3>
+          <Button onClick={openUploadBotton}>
+            Upload in image <BackupIcon className="upload" />
+          </Button>
         </>
       ) : (
         <>
@@ -140,7 +143,9 @@ function Login() {
         </Modal>
       </div>
       {user ? (
-        <Button onClick={() => auth.signOut()}>Logout</Button>
+        <>
+          <Button onClick={() => auth.signOut()}>Logout</Button>
+        </>
       ) : (
         <div className="app_login_container">
           <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
