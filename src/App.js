@@ -22,7 +22,6 @@ function App() {
     <div className="app">
       <div className="app_header">
         <Header />
-        <Login />
       </div>
       <div className="app_body">
         {posts.map((post) => (

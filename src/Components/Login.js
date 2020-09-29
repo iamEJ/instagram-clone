@@ -4,6 +4,7 @@ import { Button, Input } from "@material-ui/core";
 import Modal from "@material-ui/core/Modal";
 import { makeStyles } from "@material-ui/core/styles";
 import ImagUpload from "./ImagUpload";
+import BackupIcon from "@material-ui/icons/Backup";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -14,6 +15,7 @@ function Login() {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   const [openSignIn, setOpenSignIn] = useState(false);
+  const [openUpload, setOpenUpload] = useState(false);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -53,14 +55,26 @@ function Login() {
 
     setOpenSignIn(false);
   };
+  const openUploadBotton = () => {
+    setOpenUpload(true);
+  };
 
   return (
-    <div>
+    <div className="login">
       {user?.displayName ? (
-        <ImagUpload username={user.displayName} />
+        <>
+          <Modal open={openUpload} onClose={() => setOpenUpload(false)}>
+            <ImagUpload username={user.displayName} />
+          </Modal>
+          <Button onClick={openUploadBotton}>Upload in image</Button>
+        </>
       ) : (
-        <h3>Login to upload</h3>
+        <>
+          <h3 className="login_to_upload">Login to upload</h3>
+          <BackupIcon className="upload_icon" />
+        </>
       )}
+
       <div>
         <Modal open={open} onClose={() => setOpen(false)}>
           <div style={modalStyle} className={classes.paper}>
