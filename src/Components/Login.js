@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { auth } from "../firebase";
-import { Button, Input } from "@material-ui/core";
+import { Button, Input, IconButton } from "@material-ui/core";
 import Modal from "@material-ui/core/Modal";
 import { makeStyles } from "@material-ui/core/styles";
 import ImagUpload from "./ImagUpload";
@@ -72,10 +72,18 @@ function Login() {
           </Modal>
 
           <div class="header_icons">
-            <HomeIcon />
-            <NearMeIcon />
-            <ExploreOutlinedIcon />
-            <FavoriteBorderIcon />
+            <IconButton>
+              <HomeIcon />
+            </IconButton>
+            <IconButton>
+              <NearMeIcon />
+            </IconButton>
+            <IconButton>
+              <ExploreOutlinedIcon />
+            </IconButton>
+            <IconButton>
+              <FavoriteBorderIcon />
+            </IconButton>
           </div>
 
           <h3 className="user_name">

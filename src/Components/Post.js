@@ -2,10 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./css/Post.css";
 import Avatar from "@material-ui/core/Avatar";
 import db from "../firebase";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import SendOutlinedIcon from "@material-ui/icons/SendOutlined";
 import firebase from "firebase";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
+import NearMeOutlinedIcon from "@material-ui/icons/NearMeOutlined";
+import { IconButton } from "@material-ui/core";
 
-function Post({ postId, imageUrl, username, caption, user }) {
+function Post({ postId, imageUrl, username, caption, user, timestamp }) {
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
 
@@ -44,19 +48,36 @@ function Post({ postId, imageUrl, username, caption, user }) {
       <div className="post_header">
         <Avatar
           className="post_avatar"
-          alt="Happy Owl"
-          src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Eastern_Barn_Owl_%28Tyto_javanica_stertens%29%2C_Raigad%2C_Maharashtra.jpg"
+          alt=""
+          src="https://www.clipartmax.com/middle/m2i8m2A0K9H7N4m2_person-icons-person-icon/"
         />
-        <h3>{username}</h3>
+        <h3>
+          {username}
+          <p className="post_timestamp">
+            {new Date(timestamp?.toDate()).toUTCString()}
+          </p>
+        </h3>
       </div>
       <img className="post_image" src={imageUrl} alt="" />
+      <div className="post_icons">
+        <IconButton>
+          <FavoriteBorderIcon />
+        </IconButton>
+        <IconButton>
+          <ChatBubbleOutlineIcon />
+        </IconButton>
+        <IconButton>
+          <NearMeOutlinedIcon />
+        </IconButton>
+      </div>
+
       <h4 className="post_text">
         <strong>{username}</strong> : {caption}
       </h4>
-
       <div className="post_comments">
+        <p className="comments_list">Comments:</p>
         {comments.map((comment) => (
-          <p>
+          <p className="post_comment">
             <strong>{comment.username}</strong> {comment.text}
           </p>
         ))}
@@ -76,7 +97,7 @@ function Post({ postId, imageUrl, username, caption, user }) {
             type="submit"
             onClick={postComment}
           >
-            <ChevronRightIcon />
+            <SendOutlinedIcon />
           </button>
         </form>
       )}

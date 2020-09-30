@@ -47,6 +47,7 @@ function App() {
             key={post.id}
             postId={post.id}
             user={user}
+            timestamp={post.data.timestamp}
             username={post.data.username}
             caption={post.data.caption}
             imageUrl={post.data.imageUrl}

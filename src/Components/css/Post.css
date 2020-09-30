@@ -14,7 +14,8 @@
 
 .post_text {
   font-weight: normal;
-  padding: 20px;
+  padding: 10px 20px 20px 20px;
+  border-bottom: 1px solid lightgray;
 }
 
 .post_header {
@@ -25,6 +26,8 @@
 
 .post_avatar {
   margin-right: 10px;
+  border-spacing: 1em;
+  border: 2px solid #c51c4f;
 }
 
 .post_form {
@@ -49,4 +52,25 @@
 
 .post_comments {
   padding: 20px;
+}
+
+.post_timestamp {
+  font-weight: lighter;
+  font-size: small;
+  color: gray;
+}
+
+.post_icons {
+  padding: 10px;
+}
+
+.comments_list {
+  color: gray;
+  border-bottom: 5px;
+  margin-bottom: 3px;
+}
+
+.post_comment {
+  margin-left: 20px;
+  margin-bottom: 3px;
 }
