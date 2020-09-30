@@ -2,11 +2,29 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./Components/Header";
 import Post from "./Components/Post";
-import db from "./firebase";
-import Login from "./Components/Login";
+import db, { auth } from "./firebase";
 
 function App() {
   const [posts, setPosts] = useState([]);
+  const [user, setUser] = useState(null);
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        //login
+        console.log(authUser);
+        setUser(authUser);
+      } else {
+        //logout
+        setUser(null);
+      }
+    });
+    return () => {
+      //perform some clean up
+      unsubscribe();
+    };
+  }, [user, username]);
 
   useEffect(() => {
     db.collection("posts")
@@ -27,6 +45,8 @@ function App() {
         {posts.map((post) => (
           <Post
             key={post.id}
+            postId={post.id}
+            user={user}
             username={post.data.username}
             caption={post.data.caption}
             imageUrl={post.data.imageUrl}
