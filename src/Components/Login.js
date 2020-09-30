@@ -5,6 +5,10 @@ import Modal from "@material-ui/core/Modal";
 import { makeStyles } from "@material-ui/core/styles";
 import ImagUpload from "./ImagUpload";
 import BackupIcon from "@material-ui/icons/Backup";
+import HomeIcon from "@material-ui/icons/Home";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import NearMeIcon from "@material-ui/icons/NearMe";
+import ExploreOutlinedIcon from "@material-ui/icons/ExploreOutlined";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -66,7 +70,17 @@ function Login() {
           <Modal open={openUpload} onClose={() => setOpenUpload(false)}>
             <ImagUpload username={user.displayName} />
           </Modal>
-          <h3 className="user_name">Hello, {user.displayName}</h3>
+
+          <div class="header_icons">
+            <HomeIcon />
+            <NearMeIcon />
+            <ExploreOutlinedIcon />
+            <FavoriteBorderIcon />
+          </div>
+
+          <h3 className="user_name">
+            Hello, <strong>{user.displayName}</strong> !
+          </h3>
           <Button onClick={openUploadBotton}>
             Upload in image <BackupIcon className="upload" />
           </Button>

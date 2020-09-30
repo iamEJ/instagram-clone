@@ -41,10 +41,21 @@
 }
 .user_name {
   padding: 10px;
-  margin-left: 40px;
+  color: gray;
+  font-weight: normal;
 }
 
 .upload {
   color: gray;
   margin-left: 5px;
+}
+
+.header_icons {
+  display: flex;
+  align-items: center;
+}
+
+.header_icons > .MuiSvgIcon-root {
+  margin-right: 10px;
+  font-size: 30px;
 }
